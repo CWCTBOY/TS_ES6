@@ -104,34 +104,88 @@
 // obj4.함수4();
 // obj4.함수5();
 
-//문제1
-var 사람 = {
-  name: '손흥민',
-  sayHi: function () {
-    return `안녕 나는 ${this.name}`;
-  }
-};
+//this&arrowfunc 문제
 
-console.log(사람.sayHi()); //안녕 나는 손흥민
+//문제1
+// var 사람 = {
+//   name: '손흥민',
+//   sayHi: function () {
+//     return `안녕 나는 ${this.name}`;
+//   }
+// };
+
+// console.log(사람.sayHi()); //안녕 나는 손흥민
+
+// //문제2
+// var 자료 = {
+//   data: [1, 2, 3, 4, 5],
+//   전부더하기: function () {
+//     let sum = 0;
+//     for (let i = 0; i < this.data.length; i++)
+//     {
+//       sum += this.data[i];
+//     }
+//     console.log(sum);
+//   }
+// };
+// 자료.전부더하기();
+
+
+// //문제3
+// document.getElementById('버튼').addEventListener('click', function () {
+//   setTimeout(function () {
+//     console.log(document.getElementById('버튼').innerHTML);
+//   }, 1000)
+// });
+
+//변수 문제
+/*
+//문제1
+함수();
+function 함수() {
+  console.log(안녕);
+  let 안녕 = 'Hello!';
+} // 호이스팅 현상으로 fn함수를 실행시키는데 문제가 없다. 변수도 호이스팅현상으로 undefined지만 이는 함수에 의해 실해되므로 err
 
 //문제2
-var 자료 = {
-  data: [1, 2, 3, 4, 5],
-  전부더하기: function () {
-    for (let i = 0; i < this.data.length; i++)
-    {
-      let sum = 0;
-      sum += this.data[i];
-      return sum;
-    }
-  }
-};
-console.log(자료.전부더하기());
-
+var 함수 = function () {
+  console.log(안녕);
+  var 안녕 = 'Hello!';
+} //함수 실행을 하지않아 동작안함.
 
 //문제3
-document.getElementById('버튼').addEventListener('click', function () {
-  setTimeout(function () {
-    console.log(document.getElementById('버튼').innerHTML);
-  }, 1000)
-});
+let a = 1;
+var 함수 = function () {
+  a = 2;
+}
+console.log(a);//1, 함수를 실행하지 않았고, 함수속의 변수는 함수안에서만 실행되기 때문.
+
+//문제4
+let a = 1;
+var b = 2;
+window.a = 3;
+window.b = 4;
+
+console.log(a + b);//??
+*/
+
+//문제5
+// const loop = () => {
+//   for (let i = 0; i < 5; i++)
+//   {
+//     setTimeout(() => console.log(i + 1), (i + 1) * 1000);
+//   }
+// };
+// loop();
+
+//문제6
+var 버튼들 = document.querySelectorAll('button');
+var 모달창들 = document.querySelectorAll('div');
+
+for (let i = 0; i < 3; i++)
+{
+  const btnFnc = () => {
+    모달창들[i].style.display = "block";
+  }
+  버튼들[i].addEventListener("click", btnFnc);
+}
