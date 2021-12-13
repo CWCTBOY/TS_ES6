@@ -215,4 +215,4 @@ const arr2 = [1, 2, 3, 4];
 const arr2Sum1 = arr2.reduce((a, b) => a + b, 0);
 console.log(arr2Sum1);
 const arr2Sum2 = (a, b, c, d) => a + b + c + d;
-console.log(arr2Sum2(...arr2));
+console.log(arr2Sum2.call(undefined, ...arr2));
