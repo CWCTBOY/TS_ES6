@@ -179,13 +179,28 @@ console.log(a + b);//??
 // loop();
 
 //문제6
-var 버튼들 = document.querySelectorAll('button');
-var 모달창들 = document.querySelectorAll('div');
+// var 버튼들 = document.querySelectorAll('button');
+// var 모달창들 = document.querySelectorAll('div');
 
-for (let i = 0; i < 3; i++)
-{
-  const btnFnc = () => {
-    모달창들[i].style.display = "block";
+// for (let i = 0; i < 3; i++)
+// {
+//   const btnFnc = () => {
+//     모달창들[i].style.display = "block";
+//   }
+//   버튼들[i].addEventListener("click", btnFnc);
+// }
+
+var pants = 0;
+var socks = 100;
+`바지${pants} 양말${socks}`;
+
+const 해체분석기 = (str, vari1, vari2) => {
+  if (vari1 === 0)
+  {
+    console.log(`${str[0]}다팔렸어요 ${str[1]}${vari2}`);
+  } else
+  {
+    console.log(`${str[1]}${vari2} ${str[0]}${vari1}`);
   }
-  버튼들[i].addEventListener("click", btnFnc);
 }
+해체분석기`바지${pants} 양말${socks}`;
