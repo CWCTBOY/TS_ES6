@@ -190,17 +190,29 @@ console.log(a + b);//??
 //   버튼들[i].addEventListener("click", btnFnc);
 // }
 
-var pants = 0;
-var socks = 100;
-`바지${pants} 양말${socks}`;
+// var pants = 0;
+// var socks = 100;
+// `바지${pants} 양말${socks}`;
 
-const 해체분석기 = (str, vari1, vari2) => {
-  if (vari1 === 0)
-  {
-    console.log(`${str[0]}다팔렸어요 ${str[1]}${vari2}`);
-  } else
-  {
-    console.log(`${str[1]}${vari2} ${str[0]}${vari1}`);
-  }
-}
-해체분석기`바지${pants} 양말${socks}`;
+// const 해체분석기 = (str, vari1, vari2) => {
+//   if (vari1 === 0)
+//   {
+//     console.log(`${str[0]}다팔렸어요 ${str[1]}${vari2}`);
+//   } else
+//   {
+//     console.log(`${str[1]}${vari2} ${str[0]}${vari1}`);
+//   }
+// }
+// 해체분석기`바지${pants} 양말${socks}`;
+
+const arr = [1, 2, 3, 4];
+console.log(...arr);
+
+const obj = { name: `Park`, age: `22` };
+console.log({ ...obj });
+
+const arr2 = [1, 2, 3, 4];
+const arr2Sum1 = arr2.reduce((a, b) => a + b, 0);
+console.log(arr2Sum1);
+const arr2Sum2 = (a, b, c, d) => a + b + c + d;
+console.log(arr2Sum2(...arr2));
