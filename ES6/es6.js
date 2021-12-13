@@ -173,7 +173,7 @@ console.log(a + b);//??
 // const loop = () => {
 //   for (let i = 0; i < 5; i++)
 //   {
-//     setTimeout(() => console.log(i + 1), (i + 1) * 1000);
+//     setTimeout(() => console.log(i + 1), (i + 1) * 1000);ㄴ
 //   }
 // };
 // loop();
