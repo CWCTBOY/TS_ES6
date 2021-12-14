@@ -173,7 +173,7 @@ console.log(a + b);//??
 // const loop = () => {
 //   for (let i = 0; i < 5; i++)
 //   {
-//     setTimeout(() => console.log(i + 1), (i + 1) * 1000);ㄴ
+//     setTimeout(() => console.log(i + 1), (i + 1) * 1000);
 //   }
 // };
 // loop();
@@ -205,14 +205,22 @@ console.log(a + b);//??
 // }
 // 해체분석기`바지${pants} 양말${socks}`;
 
-const arr = [1, 2, 3, 4];
-console.log(...arr);
+// const arr = [1, 2, 3, 4];
+// console.log(...arr);
 
-const obj = { name: `Park`, age: `22` };
-console.log({ ...obj });
+// const obj = { name: `Park`, age: `22` };
+// console.log({ ...obj });
 
-const arr2 = [1, 2, 3, 4];
-const arr2Sum1 = arr2.reduce((a, b) => a + b, 0);
-console.log(arr2Sum1);
-const arr2Sum2 = (a, b, c, d) => a + b + c + d;
-console.log(arr2Sum2.call(undefined, ...arr2));
+// const arr2 = [1, 2, 3, 4];
+// const arr2Sum1 = arr2.reduce((a, b) => a + b, 0);
+// console.log(arr2Sum1);
+// const arr2Sum2 = (a, b, c, d) => a + b + c + d;
+// console.log(arr2Sum2.call(undefined, ...arr2));
+
+function fn(a, b, c, d, e, f, g, h) {
+  for (let i = 0; i < arguments.length; i++)
+  {
+    console.log(arguments[i]);
+  }
+};
+fn(1, 2, 3, 4, 5, 6, 7, 8);
