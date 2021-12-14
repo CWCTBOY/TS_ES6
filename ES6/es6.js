@@ -205,59 +205,31 @@ console.log(a + b);//??
 // }
 // 해체분석기`바지${pants} 양말${socks}`;
 
-// const arr = [1, 2, 3, 4];
-// console.log(...arr);
-
-// const obj = { name: `Park`, age: `22` };
-// console.log({ ...obj });
-
-// const arr2 = [1, 2, 3, 4];
-// const arr2Sum1 = arr2.reduce((a, b) => a + b, 0);
-// console.log(arr2Sum1);
-// const arr2Sum2 = (a, b, c, d) => a + b + c + d;
-// console.log(arr2Sum2.call(undefined, ...arr2));
-
-// function fn(a, b, c, d, e, f, g, h) {
-//   for (let i = 0; i < arguments.length; i++)
-//   {
-//     console.log(arguments[i]);
-//   }
-// };
-// fn(1, 2, 3, 4, 5, 6, 7, 8);//esnext 이전문법
-
-// const fn2 = (...rest) => {
-//   for (let i = 0; i < rest.length; i++)
-//   {
-//     console.log(rest[i]);
-//   }
-// };//esnext문법
-// fn2(1, 2, 3);
-
 // var a = [1, 2, 3];
 // var b = '김밥';
 // var c = [...b, ...a];
-// console.log(c); //[`김`, `밥`, 1, 2, 3]
+// console.log(c); // [`김`, `밥`, 1, 2, 3]
 
 // var a = [1, 2, 3];
 // var b = ['you', 'are'];
 // var c = function (a, b) {
 //   console.log([[...a], ...[...b]][1])
-// } // => [[1, 2, 3], `you`, `are`][1] => `you`
-// c(a, b);
+// }
+// c(a, b); // you
 
 // function 함수(a = 5, b = a * 2) {
 //   console.log(a + b);
 //   return 10
 // }
-// 함수(3); //9
+// 함수(3); // 9
 
 // function 함수(a = 5, b = a * 2) {
 //   console.log(a + b);
 // }
-// 함수(undefined, undefined);//15
+// 함수(undefined, undefined); // 15
 
-// function 어레이(...rest) {
-//   return rest;
+// function 어레이(...num) {
+//   return num;
 // }
 
 // var newArray = 어레이(1, 2, 3, 4, 5);
@@ -272,18 +244,14 @@ console.log(a + b);//??
 
 // 정렬('bear'); 
 
-// 데이터분석 하는 사람들이 자주 만들어 쓰는 함수가 있습니다. 
-
-// 알파벳들의 출현 갯수를 세어주는 함수입니다.우리도 한번 만들어봅시다.
-
-
-
-//   글자세기('aacbbb') 라고 입력하면 콘솔창에
-
-// { a: 2, b : 3, c : 1 }
-
-// ▲ 이렇게 출력해주는 글자세기() 라는 함수를 만들고 싶습니다.
-
-// 쉽게말하자면 입력한단어에 들어있는 알파벳의 갯수를 세어서 오브젝트에 기록해주고 출력까지 해주는 함수입니다. 
-
-// 글자세기라는 함수를 어떻게 만들면 될까요 ? 
+const countText = (text) => {
+  const arr = [...text].sort();
+  const result = {};
+  for (let i = 0; i < arr.length; i++)
+  {
+    !(arr[i] in result) ? result[arr[i]] = 1
+      : result[arr[i]] += 1;
+  }
+  console.log(result);
+};
+countText(`abcabcabcdfdfdfdf`);
