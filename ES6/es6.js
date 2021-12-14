@@ -217,10 +217,73 @@ console.log(a + b);//??
 // const arr2Sum2 = (a, b, c, d) => a + b + c + d;
 // console.log(arr2Sum2.call(undefined, ...arr2));
 
-function fn(a, b, c, d, e, f, g, h) {
-  for (let i = 0; i < arguments.length; i++)
-  {
-    console.log(arguments[i]);
-  }
-};
-fn(1, 2, 3, 4, 5, 6, 7, 8);
+// function fn(a, b, c, d, e, f, g, h) {
+//   for (let i = 0; i < arguments.length; i++)
+//   {
+//     console.log(arguments[i]);
+//   }
+// };
+// fn(1, 2, 3, 4, 5, 6, 7, 8);//esnext 이전문법
+
+// const fn2 = (...rest) => {
+//   for (let i = 0; i < rest.length; i++)
+//   {
+//     console.log(rest[i]);
+//   }
+// };//esnext문법
+// fn2(1, 2, 3);
+
+// var a = [1, 2, 3];
+// var b = '김밥';
+// var c = [...b, ...a];
+// console.log(c); //[`김`, `밥`, 1, 2, 3]
+
+// var a = [1, 2, 3];
+// var b = ['you', 'are'];
+// var c = function (a, b) {
+//   console.log([[...a], ...[...b]][1])
+// } // => [[1, 2, 3], `you`, `are`][1] => `you`
+// c(a, b);
+
+// function 함수(a = 5, b = a * 2) {
+//   console.log(a + b);
+//   return 10
+// }
+// 함수(3); //9
+
+// function 함수(a = 5, b = a * 2) {
+//   console.log(a + b);
+// }
+// 함수(undefined, undefined);//15
+
+// function 어레이(...rest) {
+//   return rest;
+// }
+
+// var newArray = 어레이(1, 2, 3, 4, 5);
+// console.log(newArray); 
+
+// var numbers = [2, 3, 4, 5, 6, 1, 3, 2, 5, 5, 4, 6, 7];
+// console.log(Math.max(...numbers));
+
+// function 정렬(str) {
+//   console.log([...str].sort());
+// }
+
+// 정렬('bear'); 
+
+// 데이터분석 하는 사람들이 자주 만들어 쓰는 함수가 있습니다. 
+
+// 알파벳들의 출현 갯수를 세어주는 함수입니다.우리도 한번 만들어봅시다.
+
+
+
+//   글자세기('aacbbb') 라고 입력하면 콘솔창에
+
+// { a: 2, b : 3, c : 1 }
+
+// ▲ 이렇게 출력해주는 글자세기() 라는 함수를 만들고 싶습니다.
+
+// 쉽게말하자면 입력한단어에 들어있는 알파벳의 갯수를 세어서 오브젝트에 기록해주고 출력까지 해주는 함수입니다. 
+
+// 글자세기라는 함수를 어떻게 만들면 될까요 ? 
