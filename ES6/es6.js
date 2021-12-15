@@ -256,11 +256,70 @@ console.log(a + b);//??
 // };
 // countText(`abcabcabcdfdfdfdf`);
 
-function Student(a, b) {
-  this.name = a;
-  this.age = b;
-  this.sayHi = () => `안녕하세요 저는 ${a}입니다`;
-}
+// function Student(a, b) {
+//   this.name = a;
+//   this.age = b;
+//   this.sayHi = () => `안녕하세요 저는 ${a}입니다`;
+// }
 
-const newObject = new Student(`김`, 22);
-console.log(newObject.sayHi());
+// const newObject = new Student(`김`, 22);
+// console.log(newObject.sayHi());
+
+// const Product = function (a, b) {
+//   this.name = a;
+//   this.price = b;
+//   this.부가세 = () => {
+//     console.log(`${b / 10}원 입니다.`);
+//   };
+// };
+
+// const product1 = new Product(`shirt`, 50000);
+// const product2 = new Product(`shirt`, 60000);
+
+// product1.부가세();
+// product2.부가세();
+
+// function Student(이름, 나이) {
+//   this.name = 이름;
+//   this.age = 나이;
+// }
+
+// Student.prototype.sayHi = () => {// arrow function이 문제
+//   console.log('안녕 나는 ' + this.name + '이야');// arrow function에서 this는 window의미
+// }
+// var 학생1 = new Student('Kim', 20);
+
+// 학생1.sayHi(); //왜 이 코드가 제대로 안나오죠?
+
+// const Remove = function (...num) {
+//   this.arr = new Array(...num);
+//   this.remove3 = function () {
+//     const result = [...num];
+//     for (let i = 0; i < this.arr.length; i++)
+//     {
+//       if (this.arr[i] === 3)
+//       {
+//         result.splice(i, 1);
+//       }
+//     }
+//     return result;
+//   };
+// };
+// const arr1 = new Remove(1, 2, 3, 4, 3, 6, 4, 3, 5, 3);
+// console.log(arr1.remove3());
+
+
+Array.prototype.remove3 = function () {
+  for (let i = 0; i < this.length; i++)
+  {
+    if (this[i] === 3)
+    {
+      this.splice(i, 1);
+    }
+  }
+  return this;
+};
+
+const arr = [1, 2, 3, 3, 5, 6, 7, 4, 3, 2, 1, 4, 3];
+console.log(arr.remove3());
+console.log(arr.filter(a => a !== 3));
