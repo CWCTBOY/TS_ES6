@@ -244,14 +244,23 @@ console.log(a + b);//??
 
 // 정렬('bear'); 
 
-const countText = (text) => {
-  const arr = [...text].sort();
-  const result = {};
-  for (let i = 0; i < arr.length; i++)
-  {
-    !(arr[i] in result) ? result[arr[i]] = 1
-      : result[arr[i]] += 1;
-  }
-  console.log(result);
-};
-countText(`abcabcabcdfdfdfdf`);
+// const countText = (text) => {
+//   const arr = [...text].sort();
+//   const result = {};
+//   for (let i = 0; i < arr.length; i++)
+//   {
+//     !(arr[i] in result) ? result[arr[i]] = 1
+//       : result[arr[i]] += 1;
+//   }
+//   console.log(result);
+// };
+// countText(`abcabcabcdfdfdfdf`);
+
+function Student(a, b) {
+  this.name = a;
+  this.age = b;
+  this.sayHi = () => `안녕하세요 저는 ${a}입니다`;
+}
+
+const newObject = new Student(`김`, 22);
+console.log(newObject.sayHi());
