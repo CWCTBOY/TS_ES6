@@ -14,4 +14,65 @@ const arr = [`Park`, 23, true, null];
 arr[4] = false;
 console.log(arr);
 
-console.log(33);
+var 어레이: (number | string)[] = [1, '2', 3];
+var 오브젝트: { data: number | string } = { data: '123' };
+
+let user = 'kim';
+let age = undefined;
+let married = false;
+let 철수: (string | number | undefined | boolean)[] = [user, age, married];
+
+type School = { score: (number | boolean)[], teacher: string, friend: string | string[] };
+
+let 학교: School = {
+  score: [100, 97, 84],
+  teacher: 'Phil',
+  friend: 'John'
+}
+학교.score[4] = false;
+학교.friend = ['Lee', 학교.teacher]
+
+const sayHi = (name?: string): string => name ? `안녕하세요 ${name}` : `이름이 없습니다.`;
+
+console.log(sayHi(`박인재`));
+console.log(sayHi());
+
+const countStr = (x: string | number): number =>
+  typeof x === `string` ? x.length : [...String(x)].length;//type narrowing
+
+console.log(countStr(1234555));
+
+const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: string): string => {
+  let sum = 월소득;
+  if (집보유여부 === true) {
+    sum += 500;
+  }
+  if (매력점수 === `상`) {
+    sum += 100;
+  }
+  if (sum >= 600) {
+    return `결혼가능`
+  } else {
+    return ``;
+  }
+};
+console.log(canYouMarry(100, false, `하`));
+
+// Array.prototype.cleaningArr = function (): number[] {
+//   let result = [];
+//   for (let i = 0; i < this.length; i++) {
+//     typeof this[i] === `string` ? result[i] = parseInt(this[i])
+//       : result[i] = this[i];
+//   }
+//   return result;
+// }; // 아니 이거 왜안되지??
+
+const cleaningArr = (arr: (number | string)[]): number[] => {
+  let result: number[] = [];
+  arr.forEach(item =>
+    typeof item === `string` ? result.push(parseInt(item))
+      : result.push(item));
+  return result;
+};
+const arr1 = [1, 2, `3`, 4, `5`];
+console.log(cleaningArr(arr1));
