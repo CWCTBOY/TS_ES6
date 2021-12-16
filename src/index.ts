@@ -56,7 +56,7 @@ const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: 
     return ``;
   }
 };
-console.log(canYouMarry(100, false, `하`));
+console.log(canYouMarry(100, true, `하`));
 
 // Array.prototype.cleaningArr = function (): number[] {
 //   let result = [];
@@ -76,3 +76,15 @@ const cleaningArr = (arr: (number | string)[]): number[] => {
 };
 const arr1 = [1, 2, `3`, 4, `5`];
 console.log(cleaningArr(arr1));
+
+
+type Subject = { subject: (string | string[]) };
+const belowSubject = (obj: Subject): string =>
+  typeof obj.subject === `string` ? obj.subject
+    : obj.subject[obj.subject.length - 1];
+let 철수쌤 = { subject: 'math' };
+let 영희쌤 = { subject: ['science', 'english'] };
+let 민수쌤 = { subject: ['science', 'art', 'korean'] };
+console.log(belowSubject(영희쌤));
+
+
