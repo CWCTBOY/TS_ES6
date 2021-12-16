@@ -309,17 +309,32 @@ console.log(a + b);//??
 // console.log(arr1.remove3());
 
 
-Array.prototype.remove3 = function () {
-  for (let i = 0; i < this.length; i++)
-  {
-    if (this[i] === 3)
-    {
-      this.splice(i, 1);
-    }
-  }
-  return this;
-};
+// Array.prototype.remove3 = function () {
+//   for (let i = 0; i < this.length; i++)
+//   {
+//     if (this[i] === 3)
+//     {
+//       this.splice(i, 1);
+//     }
+//   }
+//   return this;
+// };
 
-const arr = [1, 2, 3, 3, 5, 6, 7, 4, 3, 2, 1, 4, 3];
-console.log(arr.remove3());
-console.log(arr.filter(a => a !== 3));
+// const arr = [1, 2, 3, 3, 5, 6, 7, 4, 3, 2, 1, 4, 3];
+// console.log(arr.remove3());
+// console.log(arr.filter(a => a !== 3));
+
+
+class Remove {
+  constructor(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+  //Method
+  sayHi() {
+    console.log(`Hello ${this.name}. You are ${this.age}years old and ${this.gender}.`);
+  }
+}
+const obj = new Remove(`박인재`, 22, `Male`);
+obj.sayHi();
