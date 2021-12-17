@@ -65,7 +65,7 @@ console.log(canYouMarry(100, true, `하`));
 //       : result[i] = this[i];
 //   }
 //   return result;
-// }; // 아니 이거 왜안되지??
+// }; // 아니 이거 왜안되지?? => 커스텀 타입을 지정해주고, tsconfid.json도 변경해주어야 함.
 
 const cleaningArr = (arr: (number | string)[]): number[] => {
   let result: number[] = [];
@@ -87,4 +87,8 @@ let 영희쌤 = { subject: ['science', 'english'] };
 let 민수쌤 = { subject: ['science', 'art', 'korean'] };
 console.log(belowSubject(영희쌤));
 
+type PositionX = { x: string, y: number };
+type PositionY = { y: number, z: number };
+type New = PositionX & PositionY;// type alias extend => {x: string, y: number, z:number}
+const p: New = { x: `hi`, y: 22, z: 23 };
 
