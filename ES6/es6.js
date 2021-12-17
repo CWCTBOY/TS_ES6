@@ -330,11 +330,25 @@ class Remove {
     this.name = name;
     this.age = age;
     this.gender = gender;
+    //constructor에 함수를 넣으면 그냥 오브젝트에 함수가 추가됨.
   }
-  //Method
+  //prototype
   sayHi() {
     console.log(`Hello ${this.name}. You are ${this.age}years old and ${this.gender}.`);
-  }
+  }//여기에 함수를 작성하면 prototype 내에 함수가 추가됨.
 }
 const obj = new Remove(`박인재`, 22, `Male`);
 obj.sayHi();
+
+class Add extends Remove {
+  constructor(name, age, gender, a, b) {
+    super(name, age, gender);//constructor에서의 super는 부모의 constructor를 가져와 복제하는 것.
+    this.plus = a + b;
+  }
+  sayHello() {
+    super.sayHi();//method에서의 super는 부모의 prototype을 가져와 복제하는 것.
+  }
+}
+
+const add1 = new Add(`김혁준`, 24, `male`, 3, 4);
+add1.sayHi();
