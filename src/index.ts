@@ -103,3 +103,30 @@ const rCP = (hand: (`가위` | `바위` | `보`)): void => {
 rCP(`바위`);
 
 
+type UserInfo = { name: string, age: number, plusOne: (x: number) => number, changeName: () => void };
+let 회원정보: UserInfo = {
+  name: 'kim',
+  age: 30,
+  plusOne: (x) => x + 1,
+  changeName: () => {
+    console.log('안녕');
+  }
+}
+console.log(회원정보.plusOne(1));
+회원정보.changeName();
+
+
+// - cutZero()라는 함수를 만듭시다.이 함수는 문자를 하나 입력하면 맨 앞에 '0' 문자가 있으면 제거하고 문자 type으로 return 해줍니다.
+// - removeDash()라는 함수를 만듭시다.이 함수는 문자를 하나 입력하면 대시기호 '-' 가 있으면 전부 제거해주고 그걸 숫자 type으로 return 해줍니다. 
+
+type CutZero = (str: string) => string;
+const cutZero: CutZero = (str) => str.replace(/^0/g, ``);
+
+console.log(cutZero(`0000rkrrkrk`));
+
+type RemoveDash = (str: string) => number;
+const removeDash: RemoveDash = (str) => parseInt(str.replace(/-/g, ``));
+
+console.log(removeDash(`010-3393-9410`)); // 졸라 어렵다...
+
+
