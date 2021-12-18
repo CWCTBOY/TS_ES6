@@ -120,13 +120,18 @@ console.log(회원정보.plusOne(1));
 // - removeDash()라는 함수를 만듭시다.이 함수는 문자를 하나 입력하면 대시기호 '-' 가 있으면 전부 제거해주고 그걸 숫자 type으로 return 해줍니다. 
 
 type CutZero = (str: string) => string;
-const cutZero: CutZero = (str) => str.replace(/^0/g, ``);
+const cutZero: CutZero = (str) => str.replace(/0/g, ``);
 
-console.log(cutZero(`0000rkrrkrk`));
+console.log(cutZero(`00rk00rrkrk`));
 
-type RemoveDash = (str: string) => number;
-const removeDash: RemoveDash = (str) => parseInt(str.replace(/-/g, ``));
+type RemoveDash = (str: string) => string;
+const removeDash: RemoveDash = (str) => str.replace(/-/g, ``);
 
-console.log(removeDash(`010-3393-9410`)); // 졸라 어렵다...
+console.log(removeDash(`010-3393-9410`)); // 이전 parseInt는 숫자를 리턴하기에 앞의 0을 없애서 그럼.
 
 
+type MultiFunc = (str: string, fn1: (str: string) => string, fn2: (str: string) => string) => string;
+const multiFunc: MultiFunc = (str, fn1, fn2) => {
+  return fn2(fn1(str));
+};
+console.log(multiFunc(`01-02-03-04-05`, cutZero, removeDash)); // 12345
