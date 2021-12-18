@@ -1,3 +1,4 @@
+
 type Project = {
   member: string[];
   days: number;
@@ -91,4 +92,3 @@ type PositionX = { x: string, y: number };
 type PositionY = { y: number, z: number };
 type New = PositionX & PositionY;// type alias extend => {x: string, y: number, z:number}
 const p: New = { x: `hi`, y: 22, z: 23 };
-

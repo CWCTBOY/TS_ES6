@@ -325,30 +325,102 @@ console.log(a + b);//??
 // console.log(arr.filter(a => a !== 3));
 
 
-class Remove {
-  constructor(name, age, gender) {
-    this.name = name;
+// class Remove {
+//   constructor(name, age, gender) {
+//     this.name = name;
+//     this.age = age;
+//     this.gender = gender;
+//     //constructor에 함수를 넣으면 그냥 오브젝트에 함수가 추가됨.
+//   }
+//   //prototype
+//   sayHi() {
+//     console.log(`Hello ${this.name}. You are ${this.age}years old and ${this.gender}.`);
+//   }//여기에 함수를 작성하면 prototype 내에 함수가 추가됨.
+// }
+// const obj = new Remove(`박인재`, 22, `Male`);
+// obj.sayHi();
+
+// class Add extends Remove {
+//   constructor(name, age, gender, a, b) {
+//     super(name, age, gender);//constructor에서의 super는 부모의 constructor를 가져와 복제하는 것.
+//     this.plus = a + b;
+//   }
+//   sayHello() {
+//     super.sayHi();//method에서의 super는 부모의 prototype을 가져와 복제하는 것.
+//   }
+// }
+
+// const add1 = new Add(`김혁준`, 24, `male`, 3, 4);
+// add1.sayHi(); 
+
+
+class Dog {
+  constructor(type, color) {
+    this.type = type;
+    this.color = color;
+  }
+}
+
+const dog1 = new Dog(`말티즈`, `white`);
+const dog2 = new Dog(`진돗개`, `brown`);
+
+console.log(dog1, dog2);
+
+class Cat extends Dog {
+  constructor(type, color, age) {
+    super(type, color);
     this.age = age;
-    this.gender = gender;
-    //constructor에 함수를 넣으면 그냥 오브젝트에 함수가 추가됨.
   }
-  //prototype
-  sayHi() {
-    console.log(`Hello ${this.name}. You are ${this.age}years old and ${this.gender}.`);
-  }//여기에 함수를 작성하면 prototype 내에 함수가 추가됨.
-}
-const obj = new Remove(`박인재`, 22, `Male`);
-obj.sayHi();
-
-class Add extends Remove {
-  constructor(name, age, gender, a, b) {
-    super(name, age, gender);//constructor에서의 super는 부모의 constructor를 가져와 복제하는 것.
-    this.plus = a + b;
-  }
-  sayHello() {
-    super.sayHi();//method에서의 super는 부모의 prototype을 가져와 복제하는 것.
+  get agePlus() {
+    return this.age + 1
   }
 }
 
-const add1 = new Add(`김혁준`, 24, `male`, 3, 4);
-add1.sayHi();
+const cat1 = new Cat(`코숏`, `white`, 5);
+const cat2 = new Cat(`러시안블루`, `brown`, 2);
+
+console.log(cat1.agePlus);
+
+
+class Unit {
+  constructor(str = 5, hp = 100) {
+    this.str = str;
+    this.hp = hp;
+  }
+  get battlePoint() {
+    return this.str + this.hp;
+  }
+  set heal(num) {
+    this.hp += num;
+  }
+}
+
+const char1 = new Unit(20, 80);
+console.log(char1);
+console.log(char1.battlePoint);
+char1.heal = 50;
+console.log(char1.hp);
+
+var data = {
+  odd: [],
+  even: [],
+  setter: function (...num) {
+    for (let i = 0; i < [...num].length; i++)
+    {
+      [...num][i] % 2 === 0 ? this.even.push([...num][i])
+        : this.odd.push([...num][i]);
+    }//for 반복문
+  },
+  setter2: function (...num2) {
+    [...num2].forEach(function (item) {
+      item % 2 === 0 ? data.even.push(item)
+        : data.odd.push(item);
+    });//forEach array내장함수
+  },
+  getter: function () {
+    return console.log(this.odd.sort(), this.even.sort());
+  }
+}
+
+data.setter2(1, 5, 7, 3, 2, 6, 4, 8, 3, 3, 4, 4, 4, 5, 5, 6, 6);
+data.getter();
