@@ -43,7 +43,7 @@ const countStr = (x: string | number): number =>
 
 console.log(countStr(1234555));
 
-const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: string): string => {
+const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: (`상` | `중` | `하`)): string => {
   let sum = 월소득;
   if (집보유여부 === true) {
     sum += 500;
@@ -54,10 +54,10 @@ const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: 
   if (sum >= 600) {
     return `결혼가능`
   } else {
-    return ``;
+    return `결혼 포기해라 ㅋ`;
   }
 };
-console.log(canYouMarry(100, true, `하`));
+console.log(canYouMarry(100, false, `하`));
 
 // Array.prototype.cleaningArr = function (): number[] {
 //   let result = [];
