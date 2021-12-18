@@ -9,21 +9,22 @@ let project: Project = {
   member: ['kim', 'park'],
   days: 30,
   started: true,
-}
+} // 오브젝트는 type alias로 타입을 지정해주는게 좋다.
 
 const arr = [`Park`, 23, true, null];
 arr[4] = false;
 console.log(arr);
 
 var 어레이: (number | string)[] = [1, '2', 3];
-var 오브젝트: { data: number | string } = { data: '123' };
+var 오브젝트: { data: number | string } = { data: '123' };// array type 지정하는 법
 
-let user = 'kim';
-let age = undefined;
-let married = false;
+let user = 'kim'; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
+let age = undefined; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
+let married = false; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
 let 철수: (string | number | undefined | boolean)[] = [user, age, married];
 
 type School = { score: (number | boolean)[], teacher: string, friend: string | string[] };
+// (type1 | type2[])와 (type1 | type2)[]는 엄연히 다르다.
 
 let 학교: School = {
   score: [100, 97, 84],
@@ -39,7 +40,8 @@ console.log(sayHi(`박인재`));
 console.log(sayHi());
 
 const countStr = (x: string | number): number =>
-  typeof x === `string` ? x.length : [...String(x)].length;//type narrowing
+  typeof x === `string` ? x.length : [...String(x)].length;
+//type narrowing => type이 union type일 떄 바로 return할 수 없다. 타입을 하나로 narrowing또는 assertion해주어야 한다.
 
 console.log(countStr(1234555));
 
@@ -56,7 +58,7 @@ const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: 
   } else {
     return `결혼 포기해라 ㅋ`;
   }
-};
+}; // parameter "매력점수"와 같이 타입을 원시타입으로 하지 않을 수 있다.(ex) 123 | true 등등도 가능)=> literal type지정이라고 한다.
 console.log(canYouMarry(100, false, `하`));
 
 // Array.prototype.cleaningArr = function (): number[] {
@@ -93,7 +95,7 @@ type PositionY = { y: number, z: number };
 type New = PositionX & PositionY;// type alias extend => {x: string, y: number, z:number}
 const p: New = { x: `hi`, y: 22, z: 23 };
 
-
+// literal type지정
 const rCP = (hand: (`가위` | `바위` | `보`)): void => {
   let result: (`가위` | `바위` | `보`)[] = [];
   result.push(hand);
@@ -102,7 +104,7 @@ const rCP = (hand: (`가위` | `바위` | `보`)): void => {
 
 rCP(`바위`);
 
-
+// 함수에 type alias지정 => type FuncType = (parameter type) => {return type}
 type UserInfo = { name: string, age: number, plusOne: (x: number) => number, changeName: () => void };
 let 회원정보: UserInfo = {
   name: 'kim',
