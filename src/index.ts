@@ -39,8 +39,7 @@ const sayHi = (name?: string): string => name ? `안녕하세요 ${name}` : `이
 console.log(sayHi(`박인재`));
 console.log(sayHi());
 
-const countStr = (x: string | number): number =>
-  typeof x === `string` ? x.length : [...String(x)].length;
+const countStr = (x: string | number): number => typeof x === `string` ? x.length : [...String(x)].length;
 //type narrowing => type이 union type일 떄 바로 return할 수 없다. 타입을 하나로 narrowing또는 assertion해주어야 한다.
 
 console.log(countStr(1234555));
