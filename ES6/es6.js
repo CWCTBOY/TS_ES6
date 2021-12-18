@@ -389,10 +389,10 @@ class Unit {
   }
   get battlePoint() {
     return this.str + this.hp;
-  }
+  }// getter함수는 값을 뽑을 때 주로사용, return값을 필요로 함
   set heal(num) {
     this.hp += num;
-  }
+  }// setter함수는 오브젝트 밸류를 재할당할 때 주로 사용, parameter를 필요로 함. 이때 parameter는 하나만 가능하고 rest parameter는 못씀.
 }
 
 const char1 = new Unit(20, 80);
@@ -417,12 +417,18 @@ var data = {
         : data.odd.push(item);
     });//forEach array내장함수
   },
+  setter3: function (...num2) {
+    [...num2].forEach(item => {
+      item % 2 === 0 ? this.even.push(item)
+        : this.odd.push(item);
+    });//forEach array내장함수 with arrow function => 콜백함수에서의 this는 윈도우를 의미하므로 화살표함수를 이용해 연계. 
+  },
   getter: function () {
     return console.log(this.odd.sort(), this.even.sort());
   }
 }
 
-data.setter2(1, 5, 7, 3, 2, 6, 4, 8, 3, 3, 4, 4, 4, 5, 5, 6, 6);
+data.setter3(1, 5, 7, 3, 2, 6, 4, 8, 3, 3, 4, 4, 4, 5, 5, 6, 6);
 data.getter();
 
 
