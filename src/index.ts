@@ -11,6 +11,10 @@ let project: Project = {
   started: true,
 } // 오브젝트는 type alias로 타입을 지정해주는게 좋다.
 
+type Dog = { name: string, age: number };
+// type Cat = { name: string, age: number, express: string }; => 중복되는 속성이 있으면 이 방법보다 
+////////////////////////////////////////////////////////////////class, inerface에서도 쓰는 extends(&)를 활용한다.
+type Cat = Dog & { express: string }; // => 이런식으로!
 const arr = [`Park`, 23, true, null];
 arr[4] = false;
 console.log(arr);
@@ -138,7 +142,7 @@ const multiFunc: MultiFunc = (str, fn1, fn2) => {
 console.log(multiFunc(`01-02-03-04-05`, cutZero, removeDash)); // 12345
 
 
-// class 타입지정 이론
+// class 타입지정 이론 *********
 class Person {
   //field value zone => constructor와 똑같은 역할. 하지만 보통 constructor key type을 지정해주기 위해 사용[추측](여기서 something이 있어야 constructor에서 this.something 입력가능)
   name: string;
@@ -186,3 +190,47 @@ class Word {
 
 const word1 = new Word('kim', 3, 5, 'park', 8, 2, `choi`, 6, `cho`);
 console.log(word1);
+
+class Student {
+  name;
+  age;
+  gender;
+  constructor(name: string, age: number, gender: string) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+}
+class Teacher extends Student {
+  level;
+  constructor(name: string, age: number, gender: string, level: string) {
+    super(name, age, gender);
+    this.level = level;
+  }
+}
+const student = new Student(`Park`, 22, `male`);
+const teacher = new Teacher(`Choi`, 22, `male`, `high`);
+console.log(student, teacher);
+
+
+// interface 이론 ********* => 오브젝트에 type alias지정할떄 interface 사용가능***********
+interface Student1 {
+  name: string;
+  age: number;
+  gender: string;
+}
+interface Teacher1 extends Student1 {
+  level: string;
+}// class랑 비슷비슷
+
+const student1: Student = {
+  name: `Park`,
+  age: 22,
+  gender: `male`
+};
+const teacher1: Teacher1 = {
+  name: `Choi`,
+  age: 42,
+  gender: `female`,
+  level: `high`
+}; 
