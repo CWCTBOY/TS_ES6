@@ -326,7 +326,9 @@
 // console.log(arr.remove3());
 // console.log(arr.filter(a => a !== 3));
 
-// // class => consttructor의 신문법
+
+//// class => constructor의 신문법
+
 // class Remove {
 //   constructor(name, age, gender) {
 //     this.name = name;
@@ -384,7 +386,7 @@ const cat2 = new Cat(`러시안블루`, `brown`, 2);
 
 console.log(cat1.agePlus);
 
-//getter setter
+////getter setter
 class Unit {
   constructor(str = 5, hp = 100) {
     this.str = str;
@@ -435,7 +437,7 @@ data.setter3(1, 5, 7, 3, 2, 6, 4, 8, 3, 3, 4, 4, 4, 5, 5, 6, 6);
 data.getter();
 
 
-// destructing(es6) 어레이에 직관적으로 변수생성
+//// destructing(es6) 어레이에 직관적으로 변수생성
 
 const arr = [1, 2, 3, 4]; // 일반 어레이 생성법
 
@@ -470,3 +472,18 @@ const objFunc = ({ name, age, gender }) => {
 };
 
 objFunc(obj);
+
+//문제
+
+let 신체정보 = {
+  body: {
+    height: 190,
+    weight: 70
+  },
+  size: ["상의 Large", "바지 30인치"],
+};
+
+const { body: { height, weight }, size: [top, bottom] } = 신체정보;
+console.log(height, weight, top, bottom);
+
+////

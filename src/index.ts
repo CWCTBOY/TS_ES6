@@ -136,3 +136,53 @@ const multiFunc: MultiFunc = (str, fn1, fn2) => {
   return fn2(fn1(str));
 };
 console.log(multiFunc(`01-02-03-04-05`, cutZero, removeDash)); // 12345
+
+
+// class 타입지정 이론
+class Person {
+  //field value zone => constructor와 똑같은 역할. 하지만 보통 constructor key type을 지정해주기 위해 사용[추측](여기서 something이 있어야 constructor에서 this.something 입력가능)
+  name: string;
+  age: number;
+  gender: string;
+  constructor(a: string, b: number, c: string) {//여기서 리턴되는 값은 항상 오브젝트이므로 리턴값의 타입까지 지정해줄 필요는 없음.
+    this.name = a;                              // rest parameter, default parameter가능.
+    this.age = b;
+    this.gender = c;
+  }
+  //prototype zone => prototype함수는 리턴타입을 결정 해주어야함.
+}
+
+// 문제
+
+//1
+class Car {
+  model: string;
+  price: number;
+  constructor(model: string, price: number) {
+    this.model = model;
+    this.price = price;
+  }
+  tax(): number {
+    return this.price / 10;
+  }
+}
+
+const car1 = new Car(`Benz`, 2000000);
+console.log(car1.tax());
+
+//2
+class Word {
+  str: string[];
+  num: number[];
+  constructor(...par: (string | number)[]) {
+    this.str = [];
+    this.num = [];
+    [...par].forEach(item => {
+      typeof item === `string` ? this.str.push(item)
+        : this.num.push(item);
+    });
+  }
+}
+
+const word1 = new Word('kim', 3, 5, 'park', 8, 2, `choi`, 6, `cho`);
+console.log(word1);
