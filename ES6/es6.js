@@ -485,5 +485,3 @@ let 신체정보 = {
 
 const { body: { height, weight }, size: [top, bottom] } = 신체정보;
 console.log(height, weight, top, bottom);
-
-////
