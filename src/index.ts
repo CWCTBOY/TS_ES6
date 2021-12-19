@@ -221,7 +221,7 @@ interface Student1 {
 }
 interface Teacher1 extends Student1 {
   level: string;
-}// class랑 비슷비슷
+}// class랑 비슷비슷 => extends활용가능 like this!
 
 const student1: Student = {
   name: `Park`,
