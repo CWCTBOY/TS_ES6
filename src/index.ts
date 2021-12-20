@@ -213,7 +213,7 @@ const teacher = new Teacher(`Choi`, 22, `male`, `high`);
 console.log(student, teacher);
 
 
-// interface 이론 ********* => 오브젝트에 type alias지정할떄 interface 사용가능***********
+// interface 이론 ********* => 오브젝트에 type alias지정할떄 interface 사용가능**********
 interface Student1 {
   name: string;
   age: number;
