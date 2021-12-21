@@ -250,3 +250,18 @@ const student2: Student2 = {
 // ===>>> 
 const { name: [name1, name2, name3], age } = student2;
 console.log(name1, name2, name3, age);
+// ===>>>
+interface Student3 {
+  name5: string;
+  age3: number;
+}
+const student3: Student3 = {
+  name5: `Park`,
+  age3: 22
+};
+const { name5, age3 } = student3;
+
+const destruct = ({ name5, age3 }: { name5: string, age3: number }) => {
+  console.log(name5, age3);
+};
+destruct(student3);
