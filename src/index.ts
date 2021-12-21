@@ -1,4 +1,28 @@
+//HOW TO CONNECT HTML WITH TYPESCRIPT
+const h1 = document.querySelector(`.h1`);
+if (h1 instanceof HTMLHeadingElement) {
+  h1.innerHTML = `콘솔`;
+}
 
+const anchor = document.querySelectorAll(`.link`);
+anchor.forEach(a => {
+  if (a instanceof HTMLAnchorElement) {
+    a.href = `kakao.com`;
+  }
+})// solution1
+for (let i = 0; i < anchor.length; i++) {
+  let a = anchor[i];
+  if (a instanceof HTMLAnchorElement) {
+    a.href = `kakao.com`;
+  }
+}//solution2
+
+const img = document.querySelector(`#image`);
+if (img instanceof HTMLImageElement) {
+  img.src = `new.jpg`;
+}
+
+//type alias *********
 type Project = {
   member: string[];
   days: number;
@@ -265,3 +289,62 @@ const destruct = ({ name5, age3 }: { name5: string, age3: number }) => {
   console.log(name5, age3);
 };
 destruct(student3);
+
+//(숙제1) 숫자 여러개를 입력하면 최댓값을 return 해주는 함수를 만들어봅시다. 
+//최댓값(6, 3, 7, 2) 이렇게 쓰면 7이 return 되어야합니다.
+
+//solution 1
+type Max = (...num: number[]) => number;
+
+const max1: Max = (...num) => {
+  const sortNum = num.sort();
+  return sortNum[num.length - 1];
+};
+console.log(max1(1, 10, 10000, 100, 1000));
+
+//solution 2
+// const max2: Max = (...num) => {
+//   num.sort((a: number, b: number):number[] => {
+//     a < b ? -1 : 1;
+//   });
+//   return
+// };
+
+//solution 3
+const max3: Max = (...num) => {
+  let m = 0;
+  for (let i = 0; i < num.length; i++) {
+    if (m < num[i]) {
+      m = num[i];
+    }
+  }
+  return m;
+};
+console.log(max3(4, 23, 7, 9, 1, 100, 1000));
+
+//숙제2
+interface Destruct {
+  user: string;
+  comment: number[];
+  admin: boolean;
+}
+const destructObj: Destruct = {
+  user: 'kim',
+  comment: [3, 5, 4],
+  admin: false
+};
+
+const destructFunc = ({ user, comment, admin }: Destruct) => {
+  console.log(user, comment, admin);
+};
+
+destructFunc(destructObj);
+
+//숙제3
+type DestructArr = (number | string | boolean)[]
+const destructArr: DestructArr = [40, `wine`, false];
+
+const destructArrFunc = ([a, b, c]: DestructArr) => {
+  console.log(a, b, c);
+};
+destructArrFunc(destructArr);
