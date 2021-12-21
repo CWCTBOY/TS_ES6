@@ -23,9 +23,9 @@ var 어레이: (number | string)[] = [1, '2', 3];
 var 오브젝트: { data: number | string } = { data: '123' };// array type 지정하는 법
 
 let user = 'kim'; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
-let age = undefined; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
+let age7 = undefined; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
 let married = false; // 일반 변수는 따로 타입을 지정해주지 않아도 자동으로 타입이 할당된다.
-let 철수: (string | number | undefined | boolean)[] = [user, age, married];
+let 철수: (string | number | undefined | boolean)[] = [user, 7, married];
 
 type School = { score: (number | boolean)[], teacher: string, friend: string | string[] };
 // (type1 | type2[])와 (type1 | type2)[]는 엄연히 다르다.
@@ -174,22 +174,6 @@ class Car {
 const car1 = new Car(`Benz`, 2000000);
 console.log(car1.tax());
 
-//2
-class Word {
-  str: string[];
-  num: number[];
-  constructor(...par: (string | number)[]) {
-    this.str = [];
-    this.num = [];
-    [...par].forEach(item => {
-      typeof item === `string` ? this.str.push(item)
-        : this.num.push(item);
-    });
-  }
-}
-
-const word1 = new Word('kim', 3, 5, 'park', 8, 2, `choi`, 6, `cho`);
-console.log(word1);
 
 class Student {
   name;
@@ -233,4 +217,36 @@ const teacher1: Teacher1 = {
   age: 42,
   gender: `female`,
   level: `high`
-}; 
+};
+
+
+// rest parameter 타입지정 ********
+class Word {
+  str: string[];
+  num: number[];
+  constructor(...par: (string | number)[]) {// rest parameter는 array타입으로 입력되므로 []로 표시해주어야 한다.
+    this.str = [];
+    this.num = [];
+    [...par].forEach(item => {
+      typeof item === `string` ? this.str.push(item)
+        : this.num.push(item);
+    });
+  }
+}
+
+const word1 = new Word('kim', 3, 5, 'park', 8, 2, `choi`, 6, `cho`);
+console.log(word1);
+
+
+/// destructuring(es6) 타입지정 ********
+interface Student2 {
+  name: string[];
+  age: number;
+}
+const student2: Student2 = {
+  name: [`Kim`, `Park`, `Choi`],
+  age: 22
+};
+// ===>>> 
+const { name: [name1, name2, name3], age } = student2;
+console.log(name1, name2, name3, age);

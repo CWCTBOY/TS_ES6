@@ -448,9 +448,9 @@ console.log(a, b, c, d); // 1,2,3,4
 
 //오브젝트도 가능
 
-// const { name, age } = { name: `Kim`, age: 22 };// 어레이와 다르게 위치는 중요하지 않고 key값이 중요하다.
+const { name, age } = { name: `Kim`, age: 22 };// 어레이와 다르게 위치는 중요하지 않고 key값이 중요하다.
 
-// console.log(name, age); // `Kim`, 22 
+console.log(name, age); // `Kim`, 22 
 
 const { name1, age1 = 30 } = { name1: `Park` };
 
@@ -458,11 +458,11 @@ console.log(name1, age1); // 오브젝트에서도 키 디폴트값 부여 쌉�
 
 //역발상
 
-const name = `Park`;
-const age = 22;
+const name4 = `Park`;
+const age4 = 22;
 const gender = `male`; // 이 세가지 변수를 오브젝트에 넣고싶다면
 
-const obj = { name, age, gender };
+const obj = { name4, age4, gender };
 console.log(obj);
 
 //응용
