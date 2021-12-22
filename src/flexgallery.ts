@@ -8,4 +8,4 @@ panel.forEach(item => item.addEventListener(`mouseenter`, function (this: HTMLEl
     this.classList.remove(`open`);
     item.children[1].classList.remove(`font-size`);
   });
-}));
+})); 
