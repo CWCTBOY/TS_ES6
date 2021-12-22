@@ -1,4 +1,4 @@
-// // what "this" means?
+// this ******
 
 // console.log(this); // 1. means "window" when excuting with console, window is 전역object
 
@@ -485,3 +485,37 @@ let 신체정보 = {
 
 const { body: { height, weight }, size: [top, bottom] } = 신체정보;
 console.log(height, weight, top, bottom);
+
+// ES6 Promise ===>>> 함수 동기화, 콜백함수 중첩 줄이는용 **********
+const promise = new Promise((o, x) => {
+  // o(); ===>>> 성공(resolvesd)
+  // x(); ===>>> 실패(rejected)
+  x();
+});// promise함수는 성공 || 실패 판정기계다.
+
+promise.then(() => {
+  console.log(`Success!`);
+}).catch(() => {
+  console.log(`Fail!`);
+}); // ===>>> promise함수가 성공하면 then함수를 실행, 실패하면 catch함수실행.
+
+//promise 결괏값을 then에 첨부하려면..
+const promise1 = new Promise((o, x) => {
+  const plus = 3 + 3;
+  o(plus);// return되길 원하는 값을 resolve||reject함수의 인자에 삽입해준다.
+});
+
+promise1.then(result => console.log(result)); // 6 returned
+
+//문제
+const promise2 = new Promise((o, x) => {
+  const img = document.querySelector(`img`);
+  img.addEventListener(`load`, o());
+  img.addEventListener(`error`, x());
+});
+
+promise2.then(
+  () => console.log(`Success`)
+).catch(
+  () => console.log(`Fail`)
+);
