@@ -1,5 +1,5 @@
 build/
 node_modules/
 *.json
-*.html
+FlexGalleryCss/
 .DS_Store

@@ -1,27 +1,3 @@
-//HOW TO CONNECT HTML WITH TYPESCRIPT
-const h1 = document.querySelector(`.h1`);
-if (h1 instanceof HTMLHeadingElement) {
-  h1.innerHTML = `콘솔`;
-}
-
-const anchor = document.querySelectorAll(`.link`);
-anchor.forEach(a => {
-  if (a instanceof HTMLAnchorElement) {
-    a.href = `kakao.com`;
-  }
-})// solution1
-for (let i = 0; i < anchor.length; i++) {
-  let a = anchor[i];
-  if (a instanceof HTMLAnchorElement) {
-    a.href = `kakao.com`;
-  }
-}//solution2
-
-const img = document.querySelector(`#image`);
-if (img instanceof HTMLImageElement) {
-  img.src = `new.jpg`;
-}
-
 //type alias *********
 type Project = {
   member: string[];
