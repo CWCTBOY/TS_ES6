@@ -1,5 +1,6 @@
-build/
+.DS_Store
 node_modules/
 *.json
+build/
+ScssCompiler/
 FlexGalleryCss/
-.DS_Store
