@@ -18,9 +18,19 @@ fetch(endpoint)
     if (input instanceof HTMLInputElement) {
       input.addEventListener(`input`, function () {
         const value = this.value;
-        console.log(value);
-        const exist: Obj[] = data.filter((item: Obj) => item.city.includes(value));
-        console.log(exist);
+        const filtedObj: Obj[] = data.filter((item: Obj) => item.city.includes(value) || item.state.includes(value));
+        console.log(filtedObj);//
+        // filted word pulling Success
+        const ul = document.querySelector(`.suggestions`);
+        if (ul instanceof HTMLUListElement) {
+          for (let i = 0; i < filtedObj.length; i++) {
+            let city = filtedObj[i].city;
+            let state = filtedObj[i].state;
+            ul.innerHTML = `<li class="city-state"><p class="city">${city}, </p><p class="state">${state}</p></li>`;
+          }
+
+        }
+
       })
     };
   });
