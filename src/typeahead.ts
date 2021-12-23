@@ -22,15 +22,17 @@ fetch(endpoint)
         console.log(filtedObj);//
         // filted word pulling Success
         const ul = document.querySelector(`.suggestions`);
-        if (ul instanceof HTMLUListElement) {
+        if (ul instanceof HTMLUListElement && value !== ``) {
+          let listSet = ``;
           for (let i = 0; i < filtedObj.length; i++) {
             let city = filtedObj[i].city;
             let state = filtedObj[i].state;
-            ul.innerHTML = `<li class="city-state"><p class="city">${city}, </p><p class="state">${state}</p></li>`;
+            listSet += `<li class="city-state"><p class="city">${city}, </p><p class="state">${state}</p></li>`;
           }
-
+          ul.innerHTML = listSet;
+        } else if (ul instanceof HTMLUListElement && value === ``) {
+          ul.innerHTML = ``;
         }
-
       })
     };
   });
