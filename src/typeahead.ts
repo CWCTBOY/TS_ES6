@@ -19,7 +19,6 @@ fetch(endpoint)
       input.addEventListener(`input`, function () {
         const value = this.value;
         const filtedObj: Obj[] = data.filter((item: Obj) => item.city.includes(value) || item.state.includes(value));
-        console.log(filtedObj);//
         // filted word pulling Success
         const ul = document.querySelector(`.suggestions`);
         if (ul instanceof HTMLUListElement && value !== ``) {
@@ -27,7 +26,7 @@ fetch(endpoint)
           for (let i = 0; i < filtedObj.length; i++) {
             let city = filtedObj[i].city;
             let state = filtedObj[i].state;
-            listSet += `<li class="city-state"><p class="city">${city}, </p><p class="state">${state}</p></li>`;
+            listSet += `<li class="city-state"><span class="place">${city},  ${state}</span></li>`;
           }
           ul.innerHTML = listSet;
         } else if (ul instanceof HTMLUListElement && value === ``) {

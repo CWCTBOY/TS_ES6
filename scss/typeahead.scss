@@ -37,13 +37,15 @@ body {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+        text-transform: capitalize;
         font: {
           size: 20px;
           weight: 100;
         }
-        .city {
-          margin: 0 10px 0 20px;
-        }    
+        .place {
+          margin: 0 20px;
+        }
       }
       .city-state:nth-child(odd) {
         border: {
@@ -64,7 +66,7 @@ body {
           width: 2px;
           color:rgba(0,0,0,0.4);
         }
-        background-color: white;
+        background-color: beige;
         width: 25vw;
         height: 4vh;
         margin: 0;
