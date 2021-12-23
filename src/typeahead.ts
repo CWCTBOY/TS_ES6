@@ -14,12 +14,13 @@ fetch(endpoint)
   .then((pull: Response) => pull.json())
   .then((data: Obj[]): void => {
     const input = document.querySelector(`.search`);
+    console.log(data);
     if (input instanceof HTMLInputElement) {
-      input.addEventListener(`keydown`, function () {
+      input.addEventListener(`input`, function () {
         const value = this.value;
-        for (let i = 0; i < data.length; i++) {
-          console.log(data[i].city)
-        }
+        console.log(value);
+        const exist: Obj[] = data.filter((item: Obj) => item.city.includes(value));
+        console.log(exist);
       })
     };
   });
