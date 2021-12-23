@@ -35,11 +35,14 @@ body {
       align-items: center;
       .city-state {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         font: {
           size: 20px;
           weight: 100;
+        }
+        .city {
+          margin: 0 10px 0 20px;
         }    
       }
       .city-state:nth-child(odd) {
