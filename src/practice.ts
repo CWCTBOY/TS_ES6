@@ -324,3 +324,24 @@ const destructArrFunc = ([a, b, c]: DestructArr) => {
   console.log(a, b, c);
 };
 destructArrFunc(destructArr);
+
+// narrowing Plus 
+// in ==>==>>==>>> parameter가 서로 다른 속성타입을 가지고 있을때.
+type Fish = { swim: string }; // interface도 가능.
+type Bird = { fly: string }; // interface도 가능.
+function 함수(animal: Fish | Bird) {
+  if ("swim" in animal/*==>> Animal안에는 swim속성이 있으므로*/) {
+    return animal.swim
+  }
+  return animal.fly
+}
+
+// instanceOf ==>==>>==>>> class속성으로부터 물려받은 자식오브젝트일 때
+const date = new Date();
+const truly = () => {
+  if (date instanceof Date) {
+    console.log(date);
+  }
+};
+truly();
+
