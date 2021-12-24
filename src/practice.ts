@@ -382,3 +382,20 @@ console.log(newUser1); // => NewUser { name: 'Choi', age: 42, gender: 'Female' }
 newUser1.change(22);
 console.log(newUser1); // => NewUser { name: 'Choi', age: 42, gender: 'Male' }
 // newUser1.gender = `Male`; ==>> protected선언으로 extends에선 사용불가.
+
+// 문제1
+class User1 {
+  private static x = 10;
+  public static y = 20;
+  static addOne(num: number) {
+    console.log(User1.x += num);
+  }
+  static printX() {
+    console.log(User1.x);
+  }
+}
+User1.addOne(3); //이렇게 하면 x가 3 더해져야함
+User1.addOne(4); //이렇게 하면 x가 4 더해져야함
+User1.printX();  //이렇게 하면 콘솔창에 x값이 출력되어야함
+
+// 문제2
