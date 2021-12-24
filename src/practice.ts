@@ -11,6 +11,33 @@ let project: Project = {
   started: true,
 } // 오브젝트는 type alias로 타입을 지정해주는게 좋다.
 
+type PositionX = { x: string, y: number };
+type PositionY = { y: number, z: number };
+type New = PositionX & PositionY;// type alias extend => {x: string, y: number, z:number}
+const p: New = { x: `hi`, y: 22, z: 23 };
+
+// literal type지정
+const rCP = (hand: (`가위` | `바위` | `보`)): void => {
+  let result: (`가위` | `바위` | `보`)[] = [];
+  result.push(hand);
+  console.log(result);
+};
+
+rCP(`바위`);
+
+// 함수에 type alias지정 => type FuncType = (parameter type) => {return type}
+type UserInfo = { name: string, age: number, plusOne: (x: number) => number, changeName: () => void };
+let 회원정보: UserInfo = {
+  name: 'kim',
+  age: 30,
+  plusOne: (x) => x + 1,
+  changeName: () => {
+    console.log('안녕');
+  }
+}
+console.log(회원정보.plusOne(1));
+회원정보.changeName();
+
 type Dog = { name: string, age: number };
 // type Cat = { name: string, age: number, express: string }; => 중복되는 속성이 있으면 이 방법보다 
 ////////////////////////////////////////////////////////////////class, inerface에서도 쓰는 extends(&)를 활용한다.
@@ -64,15 +91,6 @@ const canYouMarry = (월소득: number, 집보유여부: boolean, 매력점수: 
 }; // parameter "매력점수"와 같이 타입을 원시타입으로 하지 않을 수 있다.(ex) 123 | true 등등도 가능)=> literal type지정이라고 한다.
 console.log(canYouMarry(100, false, `하`));
 
-// Array.prototype.cleaningArr = function (): number[] {
-//   let result = [];
-//   for (let i = 0; i < this.length; i++) {
-//     typeof this[i] === `string` ? result[i] = parseInt(this[i])
-//       : result[i] = this[i];
-//   }
-//   return result;
-// }; // 아니 이거 왜안되지?? => 커스텀 타입을 지정해주고, tsconfig.json도 변경해주어야 함.
-
 const cleaningArr = (arr: (number | string)[]): number[] => {
   let result: number[] = [];
   arr.forEach(item =>
@@ -93,32 +111,25 @@ let 영희쌤 = { subject: ['science', 'english'] };
 let 민수쌤 = { subject: ['science', 'art', 'korean'] };
 console.log(belowSubject(영희쌤));
 
-type PositionX = { x: string, y: number };
-type PositionY = { y: number, z: number };
-type New = PositionX & PositionY;// type alias extend => {x: string, y: number, z:number}
-const p: New = { x: `hi`, y: 22, z: 23 };
-
-// literal type지정
-const rCP = (hand: (`가위` | `바위` | `보`)): void => {
-  let result: (`가위` | `바위` | `보`)[] = [];
-  result.push(hand);
-  console.log(result);
-};
-
-rCP(`바위`);
-
-// 함수에 type alias지정 => type FuncType = (parameter type) => {return type}
-type UserInfo = { name: string, age: number, plusOne: (x: number) => number, changeName: () => void };
-let 회원정보: UserInfo = {
-  name: 'kim',
-  age: 30,
-  plusOne: (x) => x + 1,
-  changeName: () => {
-    console.log('안녕');
+// narrowing Plus 
+// in ==>==>>==>>> parameter가 서로 다른 속성타입을 가지고 있을때.
+type Fish = { swim: string }; // interface도 가능.
+type Bird = { fly: string }; // interface도 가능.
+function 함수(animal: Fish | Bird) {
+  if ("swim" in animal/*==>> Animal안에는 swim속성이 있으므로*/) {
+    return animal.swim
   }
+  return animal.fly
 }
-console.log(회원정보.plusOne(1));
-회원정보.changeName();
+
+// instanceOf ==>==>>==>>> class속성으로부터 물려받은 자식오브젝트일 때
+const date = new Date();
+const truly = () => {
+  if (date instanceof Date) {
+    console.log(date);
+  }
+};
+truly();
 
 
 // - cutZero()라는 함수를 만듭시다.이 함수는 문자를 하나 입력하면 맨 앞에 '0' 문자가 있으면 제거하고 문자 type으로 return 해줍니다.
@@ -325,23 +336,49 @@ const destructArrFunc = ([a, b, c]: DestructArr) => {
 };
 destructArrFunc(destructArr);
 
-// narrowing Plus 
-// in ==>==>>==>>> parameter가 서로 다른 속성타입을 가지고 있을때.
-type Fish = { swim: string }; // interface도 가능.
-type Bird = { fly: string }; // interface도 가능.
-function 함수(animal: Fish | Bird) {
-  if ("swim" in animal/*==>> Animal안에는 swim속성이 있으므로*/) {
-    return animal.swim
+
+// 함수타입 never 
+// 조건  => return값 없어야 함, endpoint가 없어야 함. => 쓸떼없음(void로 대체)
+// 보통 never는 코드를 이상하게 짤 때 발견됨.
+const error = (): never => {
+  throw new Error(); // ===>> 강제로 에러내는 함수 while...
+};
+
+// public, private, protected, static (class) ************************
+class User {// public, private, protected, static
+  public name: string; // ==>> 모든자식들이 이용가능.(안써도 자동으로 붙기때문에 생략가능.)
+  private age: number; // ==>> 모든자식들이 이용 불가능.(class 중괄호 안에서만 변경가능, extends써도 사용 불가능) => 속성값을 보호하고 싶을때만
+  protected gender: string; // ==>> protected는 private와 동일하지만 extends했을 때도 사용이 가능하다는게 유일한 차이점.(다만 자식들은 여전히 사용불가능하다.)
+  static level: string = `LV.42`; // 부모 class에만 직접 부여됨. 자식Object에 상속되지 않는다. [(public | private | protected) + static]과 같이 중복 사용가능.
+  constructor(name: string, age: number, gender: string) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
   }
-  return animal.fly
+  public changeAge(changeAge: number): void {// 필드의 (private, protected)변수를 긴급 수정하는 법
+    this.age = changeAge;
+  }
 }
 
-// instanceOf ==>==>>==>>> class속성으로부터 물려받은 자식오브젝트일 때
-const date = new Date();
-const truly = () => {
-  if (date instanceof Date) {
-    console.log(date);
-  }
-};
-truly();
+const user1 = new User(`Park`, 22, `Male`); // => case1
+user1.name = `Kim`; // => case2
+// user1.age = 24; ==>> Error => case3
+user1.changeAge(32); // class prototype함수로 private변수 긴급변경 가능. => case4
+console.log(user1); // case1 => User { name: 'Park', age: 22, gender: `Male` }, case2 => User { name: 'Kim', age: 22, gender: `Male` }, case3 => Error, case4 => User { name: 'Kim', age: 32, gender: `Male` }
 
+class NewUser extends User {
+  //필드는 자동복사되어서 super사용 x
+  constructor(name: string, age: number, gender: string) {
+    super(name, age, gender);
+  }
+  change(changeAge: number) {
+    super.changeAge(changeAge);
+    this.gender = `Male`; // ==>> protected선언은 prototype에서만 사용(변경)이 가능하다.
+  }// class prototype함수는 이렇게 복제하도록 하자.
+}
+
+const newUser1 = new NewUser(`Choi`, 42, `Female`);
+console.log(newUser1); // => NewUser { name: 'Choi', age: 42, gender: 'Female' }
+newUser1.change(22);
+console.log(newUser1); // => NewUser { name: 'Choi', age: 42, gender: 'Male' }
+// newUser1.gender = `Male`; ==>> protected선언으로 extends에선 사용불가.

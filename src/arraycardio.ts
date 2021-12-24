@@ -1,14 +1,6 @@
 // ## Array Cardio Day 2
-interface People {
-  name: string;
-  year: number;
-}
-interface Comments {
-  text: string;
-  id: number;
-}
-type PeopleArr = People[];
-type CommentsArr = Comments[];
+type PeopleArr = { name: string, year: number }[];
+type CommentsArr = { text: string, id: number }[];
 
 const people: PeopleArr = [
   { name: 'Wes', year: 1988 },
