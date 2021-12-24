@@ -1,11 +1,3 @@
-// this ******
-
-// console.log(this); // 1. means "window" when excuting with console, window is 전역object
-
-// const obj = {
-//   name1: "Park",
-//   age: 22,
-//   함수1() {
 //     console.log(this);
 //   },
 //   objInObj: {
