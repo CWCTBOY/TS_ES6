@@ -399,3 +399,37 @@ User1.addOne(4); //이렇게 하면 x가 4 더해져야함
 User1.printX();  //이렇게 하면 콘솔창에 x값이 출력되어야함
 
 // 문제2
+// class Square {
+//   public hor: number;
+//   public vert: number;
+//   public color: string;
+//   constructor(hor: number, vert: number, color: string) {
+//     this.hor = hor;
+//     this.vert = vert;
+//     this.color = color;
+//   }
+//   public draw() {
+//     const bigSquare = document.querySelector(`.space`);
+//     const miniSquare = document.createElement(`div`);
+//     miniSquare.style.width = `${this.hor}px`;
+//     miniSquare.style.height = `${this.vert}px`;
+//     miniSquare.style.borderRadius = `${this.hor / 2}px`
+//     miniSquare.style.backgroundColor = `${this.color}`;
+//     miniSquare.style.position = `absolute`;
+//     miniSquare.style.top = `${Math.random() * 380}px`;
+//     miniSquare.style.left = `${Math.random() * 380}px`; //  insertAdjacentHTML를 사용해 HTML을 직접 삽입도 가능하다.
+//     if (bigSquare instanceof HTMLDivElement) {
+//       bigSquare.appendChild(miniSquare);
+//     }
+//   }
+// }
+
+// const square1 = new Square(20, 20, `red`);
+// square1.draw();
+// square1.draw();
+// square1.draw();
+// square1.draw();
+// square1.draw();
+// square1.draw();
+// square1.draw();
+// square1.draw();
