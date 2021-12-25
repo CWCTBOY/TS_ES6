@@ -423,7 +423,6 @@ User1.printX();  //이렇게 하면 콘솔창에 x값이 출력되어야함
 //     }
 //   }
 // }
-
 // const square1 = new Square(20, 20, `red`);
 // square1.draw();
 // square1.draw();
@@ -433,3 +432,32 @@ User1.printX();  //이렇게 하면 콘솔창에 x값이 출력되어야함
 // square1.draw();
 // square1.draw();
 // square1.draw();
+
+// Generic함수 ******* ==>> 편한 narrowing
+// 문제1
+const countLength = <T extends string | string[]>(par: T): void => {
+  console.log(par.length);
+};
+countLength([`kim`, `park`]);
+
+// 문제2
+interface Animal {
+  name: string;
+  age: number
+}
+let data = '{"name" : "dog", "age" : 1 }';
+
+const parseJson = <T extends Animal>(json: string): T => {
+  return JSON.parse(json);
+};
+console.log(parseJson(data));
+
+// 문제3
+class Person5<T> {
+  public name: T;// => 타입생략가능.
+  constructor(name: T) {
+    this.name = name;
+  }
+}
+let a = new Person5<string[]>(['박인재', `오현준`]);
+console.log(typeof a.name);

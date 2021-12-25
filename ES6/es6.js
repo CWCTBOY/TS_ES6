@@ -1,5 +1,4 @@
-//     console.log(this);
-//   },
+//console.log(this);
 //   objInObj: {
 //     name2: "Kim",
 //     함수2() {
@@ -475,8 +474,8 @@ let 신체정보 = {
   size: ["상의 Large", "바지 30인치"],
 };
 
-const { body: { height, weight }, size: [top, bottom] } = 신체정보;
-console.log(height, weight, top, bottom);
+const { body: { height, weight }, size: [top1, bottom] } = 신체정보;
+console.log(height, weight, top1, bottom);
 
 // ES6 Promise ===>>> 함수 동기화, 콜백함수 중첩 줄이는용 **********
 const promise = new Promise((o, x) => {
@@ -511,3 +510,24 @@ promise2.then(
 ).catch(
   () => console.log(`Fail`)
 );
+
+//async==>> promise를 좀 더 깔끔하게 만듬.(es8) **************
+const plus = async (a, b) => a + b;// promise로 만드는 대신 함수 앞에 async를 붙이면 된다. ==>> 성공만 출력(catch못씀), then에 결괏값 적용하려면 return.
+plus(1, 2).then(result => console.log(result)); // ==>> 3
+
+const minus = async (a, b) => Promise.reject(a - b);// ==>> async로 실패promise 만드는 법
+minus(4, 1).catch(result => console.log(result));
+
+const calculate = async (a, b) => { // Promise는 앞으로 이렇게 합시다! ************************************************
+  if (a === b)
+  {
+    return a + b;
+  } else
+  {
+    Promise.reject();
+    return a - b;
+  }
+};
+calculate(100, 100)
+  .then(result => console.log(result))
+  .catch(result => console.log(result));
