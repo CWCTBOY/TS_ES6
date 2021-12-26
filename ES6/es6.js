@@ -531,3 +531,77 @@ const calculate = async (a, b) => { // Promise는 앞으로 이렇게 합시다!
 calculate(100, 100)
   .then(result => console.log(result))
   .catch(result => console.log(result));
+
+
+// for in ==>> object자료형에만 사용, for of ==>> iteral(Array, String, Arguments, NodeList, Map, Set) *********
+
+//for in ==> enumerable한것만 출력. (enumerable : 셀수있는) ==> 일반 자료들은 항상 enumerable가 true 
+class Obj6 {
+  name = `Park`;
+}
+Obj6.prototype.age = 22;
+// 부모의 prototype도 출력해줌
+const obj6 = new Obj6();
+console.log(obj6);// {name:`Park`}
+for (let key in obj6)
+{
+  if (obj6.hasOwnProperty(key)/*true*/) // 부모prototype을 빼고싶으면 해당라인과 같이 검사를 해주어야 함 ==> Park
+  {
+    console.log(obj6[key]); //이것만 썼을 때는 Park, 22 ==> 부모의 prototype인 age도 출력을 해줌.
+  }
+}
+
+//for of
+//Array
+const arr2 = [1, 2, 3, 4, 5];
+for (let data of arr2)
+{
+  console.log(data); // ==>>1,2,3,4,5 data는 Array안의 하나하나의 자료
+}
+//String
+const str = `ABCDEFG`;
+for (let data of str)
+{
+  console.log(data);// ==>> A,B,C,D,E,F,G data는 String의 하나하나의 음절
+}
+
+// Q1. 메이킹 구구단
+const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (let data of arr3)
+{
+  console.log(2 * data);
+  console.log(3 * data);
+  console.log(4 * data);
+  console.log(5 * data);
+  console.log(6 * data);
+  console.log(7 * data);
+  console.log(8 * data);
+  console.log(9 * data);
+}
+// Q2.
+var products = [
+  {
+    name1: 'chair',
+    price1: 7000,
+  },
+  {
+    name2: 'sofa',
+    price: 5000,
+  },
+  {
+    name1: 'desk',
+    price3: 9000,
+  },
+];
+for (let data of products)
+{
+  for (let key in data)
+  {
+    if (parseInt(key.slice(-1)) !== `number`)
+    {
+      data[key.slice(0, -1)] = data[key];
+      delete data[key];
+    }
+  }
+}
+console.log(products);
