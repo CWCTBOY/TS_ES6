@@ -461,3 +461,5 @@ class Person5<T> {
 }
 let a = new Person5<string[]>(['박인재', `오현준`]);
 console.log(typeof a.name);
+
+
