@@ -462,4 +462,60 @@ class Person5<T> {
 let a = new Person5<string[]>(['박인재', `오현준`]);
 console.log(typeof a.name);
 
+//just practicing
+const countArr2 = <T extends string | string[]>(par: T): number => {
+  return par.length;
+}
+console.log(countArr2(`park`), countArr2([`park`, `kim`]));
 
+interface Animal2 {
+  name: string;
+  age: number
+}
+
+let data5 = '{"name" : "dog", "age" : 1 }'
+
+const convertJson = <T>(str: string): T => {
+  return JSON.parse(str);
+}
+console.log(convertJson<Animal2>(data5));
+
+class Person2<T> {
+  public name: T;
+  constructor(a: T) {
+    this.name = a;
+  }
+}
+let a2 = new Person2(3);
+console.log(typeof a2.name);
+
+// tuple
+
+//Q1
+type Arr = [string, number, ...boolean[]];
+
+let arr2: Arr = ['동서녹차', 4000, true, false, true, true, false, true];
+
+const tuple = (arr: [string, boolean, ...(number | string)[]]) => {
+
+};
+
+const categorizeArr = (...arr: (string | number)[]): [string[], number[]] => {
+  let container: [string[], number[]] = [[], []];
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (typeof arr[i] === `string`) {
+  //     container[0].push(arr[i]);
+  //   } else {
+  //     container[1].push(arr[i]);
+  //   } 이건 왜 안되는거지?
+  arr.forEach(item => {
+    if (typeof item === `string`) {
+      container[0].push(item);
+    } else {
+      container[1].push(item);
+    }
+  });
+  return container;
+}
+
+console.log(categorizeArr(1, 3, `park`));
