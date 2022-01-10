@@ -605,3 +605,17 @@ for (let data of products)
   }
 }
 console.log(products);
+
+// Map 자료형 ==>> 거의 안씀...
+const person = new Map(); // 자료간의 연관성을 표현하기 위해 사용
+person.set('name', 'Kim'); // name(key)에 Kim(value)할당 , key, value자리에 모든 자료형 삽입 가능(ex. array, object, number....)
+person.set(100, 'Kim');
+person.set([1, 2, 'park'], 'Kim');
+console.log(person); // person{name => Kim}
+
+//Map 자료형 출력하는 법
+console.log(person.get(100));
+
+//Map 자료형 삭제하는 법
+console.log(person.delete('name'));
+
