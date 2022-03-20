@@ -13,6 +13,6 @@
   "author": "CWCTBOY",
   "license": "MIT",
   "dependencies": {
-    "tsc-watch": "^4.5.0"
+    "tsc-watch": "^4.6.2"
   }
 }
