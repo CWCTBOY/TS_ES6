@@ -1,6 +1,12 @@
-function hi() {
-  var one = 1;
-  let two = 2;
-  const three = 3;
+'use strict';
+function count(text) {
+  const textSort = [...text].sort();
+  const dataMiner = {};
+  textSort.forEach(item => {
+    dataMiner[item] == undefined
+      ? dataMiner[item] = 1
+      : dataMiner[item] += 1
+  })
+  console.log(dataMiner);
 }
-console.log(one);
+count('aaaccbb');
